@@ -3,7 +3,36 @@
 Mongoid::Tags adds a simple tagging system to your Mongoid documents,
 and allows you to query them using a boolean search syntax.
 
-TODO: Add more info.
+
+## Installation
+
+In your Gemfile:
+
+```ruby
+gem 'mongoid-tags'
+```
+
+## Usage
+
+```ruby
+class Document
+  include Mongoid::Document
+  include Mongoid::Tags
+end
+```
+
+```ruby
+# Documents tagged foo || bar
+Document.tagged('foo bar')
+
+# Documents tagged foo && bar
+Document.tagged('+foo bar')
+
+# Documents tagged foo, but !bar
+Document.tagged('foo -bar')
+```
+
+Be sure to checkout spec/integration_spec.rb for more examples. By the way, `tagged` returns a `Mongoid::Criteria` object so you can chain it to your existing criteria, e.g: `Document.where(published: true).tagged('foo').desc(:created_at)` 
 
 ## Contributing
 
