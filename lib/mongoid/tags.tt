@@ -1,0 +1,33 @@
+module Mongoid
+  module Tags
+    grammar Tags
+      rule query
+        tag (space tag)* <Query>
+      end
+
+      rule tag
+        operator tag:([a-zA-Z0-9] [a-zA-Z0-9_]*) <Tag>
+      end
+
+      rule operator
+         and_operator / not_operator / or_operator
+      end
+
+      rule or_operator
+        '' <OrOperator>
+      end
+
+      rule and_operator
+        '+' <AndOperator>
+      end
+
+      rule not_operator
+        '-' <NotOperator>
+      end
+
+      rule space
+        [\s]+
+      end
+    end
+  end
+end
