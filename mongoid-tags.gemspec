@@ -6,8 +6,8 @@ Gem::Specification.new do |gem|
   gem.authors       = 'Mario Uher'
   gem.email         = 'uher.mario@gmail.com'
   gem.homepage      = 'https://github.com/haihappen/mongoid-tags'
-  gem.summary       = 'TODO'
-  gem.description   = 'TODO'
+  gem.summary       = 'Simple tagging system with boolean search.'
+  gem.description   = 'Mongoid::Tags adds a simple tagging system to your Mongoid documents, and allows you to query them using a boolean search syntax.'
 
   gem.files         = `git ls-files`.split("\n")
   gem.require_path  = 'lib'
