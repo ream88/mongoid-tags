@@ -1,4 +1,5 @@
-require './lib/mongoid/tags/version'
+$: << File.expand_path('../lib', __FILE__)
+require 'mongoid/tags/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'mongoid-tags'
