@@ -46,7 +46,7 @@ Be sure to checkout spec/integration_spec.rb for more examples. By the way, `tag
 
 (The MIT license)
 
-Copyright (c) 2012 Mario Uher
+Copyright (c) 2012-2014 Mario Uher
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
