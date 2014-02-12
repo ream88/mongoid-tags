@@ -33,7 +33,7 @@ module Mongoid
         {}.tap do |criteria|
           (tags.presence || elements).each do |tag|
             (criteria[tag.operator.selector] ||= []) << tag.to_criteria if tag.is_a? Tag
-            
+
             criteria.merge!(to_criteria(tag.elements)) { |key, first, second| first + second } if tag.elements.present?
           end
         end

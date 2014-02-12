@@ -6,5 +6,9 @@ require 'minitest/spec'
 
 require 'mongoid/tags'
 
-# Load support *.rb files in ./support
-Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require_relative file }
+class Document
+  include Mongoid::Document
+  include Mongoid::Tags
+end
+
+Mongoid.load!(File.expand_path('../mongoid.yml', __FILE__), 'test')
