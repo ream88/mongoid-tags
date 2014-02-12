@@ -1,3 +1,11 @@
+# 0.3.0 (February 12, 2014)
+* Use Rake::FileList.
+* Removes Gemfile warning.
+* Simplifies tests a lot.
+
+# 0.2.0 (December 31, 2012)
+* Use require_relative.
+
 # 0.1.1 (December 22, 2012)
 * Updated gemspec.
 
