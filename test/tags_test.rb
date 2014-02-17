@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 
-class TagsTest < Minitest::Test
+class TagsTest < Minitest::Unit::TestCase
   def assert_selector(query, selector)
     assert_equal selector, Document.selector(query)
   end
