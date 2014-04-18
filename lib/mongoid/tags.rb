@@ -13,9 +13,10 @@ module Mongoid
 
     module ClassMethods
       def selector(query)
-        parser.parse(query).tap do |result|
-          raise Error, parser.failure_reason unless result
-        end.to_criteria
+        parsed_query = parser.parse(query)
+        raise Mongoid::Tags::Error, parser.failure_reason unless parsed_query
+
+        parsed_query.to_criteria
       end
 
       def tagged(query)
@@ -29,14 +30,20 @@ module Mongoid
     end
 
     class Query < Treetop::Runtime::SyntaxNode
-      def to_criteria(tags = nil)
-        {}.tap do |criteria|
-          (tags.presence || elements).each do |tag|
-            (criteria[tag.operator.selector] ||= []) << tag.to_criteria if tag.is_a? Tag
+      def to_criteria(elements = nil)
+        elements ||= self.elements
 
-            criteria.merge!(to_criteria(tag.elements)) { |key, first, second| first + second } if tag.elements.present?
+        criteria = Hash.new { |h, k| h[k] = [] }
+
+        elements.each do |element|
+          criteria[element.operator.selector] << element.to_criteria if element.is_a?(Tag)
+
+          criteria.merge! to_criteria(Array(element.elements)) do |_, first, second|
+            first + second
           end
         end
+
+        criteria
       end
     end
 
