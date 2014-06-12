@@ -20,7 +20,7 @@ module Mongoid
       end
 
       def tagged(query)
-        where(tags: selector(query))
+        where(selector(query))
       end
 
     private
@@ -33,17 +33,43 @@ module Mongoid
       def to_criteria(elements = nil)
         elements ||= self.elements
 
-        criteria = Hash.new { |h, k| h[k] = [] }
+        criteria = { 'tags' => Hash.new { |h, k| h[k] = [] } }
 
         elements.each do |element|
-          criteria[element.operator.selector] << element.to_criteria if element.is_a?(Tag)
+          criteria['tags'][element.operator.selector] << element.to_criteria if element.is_a?(Tag)
 
-          criteria.merge! to_criteria(Array(element.elements)) do |_, first, second|
+          criteria['tags'].merge! to_criteria(Array(element.elements))['tags'] do |_, first, second|
             first + second
           end
         end
 
         criteria
+      end
+    end
+
+    class SubQuery < Treetop::Runtime::SyntaxNode
+      def to_criteria(elements = nil)
+        elements ||= self.elements
+
+        criteria = []
+        subcriteria = { '$or' => [] }
+
+        elements.each do |element|
+          case element
+          when Query
+            criteria << element.to_criteria
+          when SubQuery
+            element.to_criteria['$or'].each do |criterion|
+              criteria << criterion
+            end
+          end
+        end
+
+        criteria.each do |criterion|
+          subcriteria['$or'] << criterion
+        end
+
+        subcriteria
       end
     end
 

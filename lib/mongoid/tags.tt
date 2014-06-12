@@ -2,7 +2,11 @@ module Mongoid
   module Tags
     grammar Tags
       rule query
-        tag (space tag)* <Query>
+        subquery / tag (space tag)* <Query>
+      end
+
+      rule subquery
+        '(' space? query space? ')' space? query? <SubQuery>
       end
 
       rule tag

@@ -1,8 +1,8 @@
 require_relative 'test_helper'
 
 # Create all possible combinations of tags.
-3.times do |i|
-  %w[foo bar baz].combination(i + 1).each do |tags|
+4.times do |i|
+  %w[foo bar baz qux].combination(i + 1).each do |tags|
     Document.create tags: tags
   end
 end
@@ -11,6 +11,14 @@ end
 def include?(*tags)
   proc do |document|
     tags.any? do |tag|
+      document.tags.include?(tag)
+    end
+  end
+end
+
+def include_all?(*tags)
+  proc do |document|
+    tags.all? do |tag|
       document.tags.include?(tag)
     end
   end
@@ -116,5 +124,32 @@ class IntegrationTest < Minitest::Unit::TestCase
     assert documents.none? &include?('foo')
     assert documents.none? &include?('bar')
     assert documents.none? &include?('baz')
+  end
+
+
+  def test_documents_including_both_foo_and_bar_and_or_baz
+    documents = Document.tagged('(+foo +bar) baz').to_a
+
+    assert documents.any?  &include_all?('foo', 'bar')
+    documents.delete_if    &include_all?('foo', 'bar')
+    assert documents.all?  &include?('baz')
+  end
+
+
+  def test_documents_including_both_foo_and_bar_and_or_baz_or_qux
+    documents = Document.tagged('(+foo +bar) baz qux').to_a
+
+    assert documents.any?  &include_all?('foo', 'bar')
+    documents.delete_if    &include_all?('foo', 'bar')
+    assert documents.any?  &include?('baz', 'qux')
+  end
+
+
+  def test_documents_including_foo_and_bar_or_baz_and_qux
+    documents = Document.tagged('(+foo +bar)(+baz +qux)').to_a
+
+    assert documents.any? &include_all?('foo', 'bar')
+    documents.delete_if   &include_all?('foo', 'bar')
+    assert documents.any? &include_all?('baz', 'qux')
   end
 end
