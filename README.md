@@ -30,6 +30,12 @@ Document.tagged('+foo bar')
 
 # Documents tagged foo, but !bar
 Document.tagged('foo -bar')
+
+# Documents tagged foo and bar or baz
+Document.tagged('(+foo +bar) baz')
+
+# Documents tagged foo and bar, or foo and baz
+Document.tagged('(+foo +bar)(+foo +baz)')
 ```
 
 Be sure to checkout spec/integration_spec.rb for more examples. By the way, `tagged` returns a `Mongoid::Criteria` object so you can chain it to your existing criteria, e.g: `Document.where(published: true).tagged('foo').desc(:created_at)`

@@ -1,3 +1,6 @@
+# Not released
+* Adds subqueries. See README.md for examples.
+
 # 0.3.0 (February 12, 2014)
 * Use Rake::FileList.
 * Removes Gemfile warning.
