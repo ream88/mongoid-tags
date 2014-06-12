@@ -10,7 +10,7 @@ module Mongoid
       end
 
       rule operator
-         and_operator / not_operator / or_operator
+        and_operator / not_operator / or_operator
       end
 
       rule or_operator
