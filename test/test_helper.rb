@@ -12,3 +12,4 @@ class Document
 end
 
 Mongoid.load!(File.expand_path('../mongoid.yml', __FILE__), 'test')
+Mongoid.purge!
