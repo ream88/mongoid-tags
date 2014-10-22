@@ -25,7 +25,7 @@ def include_all?(*tags)
 end
 
 
-class IntegrationTest < Minitest::Unit::TestCase
+class IntegrationTest < Minitest::Test
   def test_documents_including_foo
     assert Document.tagged('foo').all? &include?('foo')
   end
