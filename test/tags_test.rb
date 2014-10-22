@@ -26,6 +26,8 @@ class TagsTest < Minitest::Unit::TestCase
     assert_selector '(+foo +bar)(+foo +baz)(+foo +qux)', { '$or' => [{ 'tags' => { '$all' => %w[foo bar] } }, { 'tags' => { '$all' => %w[foo baz] } }, { 'tags' => { '$all' => %w[foo qux] } }] }
 
     assert_selector '(+foo +bar) baz qux', { '$or' => [{ 'tags' => { '$all' => %w[foo bar] } }, { 'tags' => { '$in' => %w[baz qux] } } ]}
+
+    assert_selector '_foo _bar', { 'tags' => { '$in' => %w[_foo _bar] }}
   end
 
   def test_invalid_queries

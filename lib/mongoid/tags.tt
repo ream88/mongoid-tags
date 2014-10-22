@@ -10,7 +10,7 @@ module Mongoid
       end
 
       rule tag
-        operator tag:([a-zA-Z0-9] [a-zA-Z0-9_]*) <Tag>
+        operator tag:([a-zA-Z0-9_]+) <Tag>
       end
 
       rule operator
