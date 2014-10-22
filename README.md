@@ -19,9 +19,7 @@ class Document
   include Mongoid::Document
   include Mongoid::Tags
 end
-```
 
-```ruby
 # Documents tagged foo || bar
 Document.tagged('foo bar')
 
@@ -38,7 +36,7 @@ Document.tagged('(+foo +bar) baz')
 Document.tagged('(+foo +bar)(+foo +baz)')
 ```
 
-Be sure to checkout spec/integration_spec.rb for more examples. By the way, `tagged` returns a `Mongoid::Criteria` object so you can chain it to your existing criteria, e.g: `Document.where(published: true).tagged('foo').desc(:created_at)`
+Be sure to checkout test/integration_test.rb for more examples. By the way, `tagged` returns a `Mongoid::Criteria` object so you can chain it to your existing criteria, e.g: `Document.where(published: true).tagged('foo').desc(:created_at)`
 
 ## Contributing
 
