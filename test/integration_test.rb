@@ -7,7 +7,7 @@ require_relative 'test_helper'
   end
 end
 
-# Litte helper which helps to DRY tests.
+# Little helper which helps to DRY tests.
 def include?(*tags)
   proc do |document|
     tags.any? do |tag|

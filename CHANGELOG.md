@@ -1,4 +1,8 @@
-# Not released
+# 1.0.0
+* First public version
+
+# 0.3.2
+* Allow tags to start with underscores.
 * Adds subqueries. See README.md for examples.
 
 # 0.3.0 (February 12, 2014)

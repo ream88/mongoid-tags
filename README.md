@@ -34,9 +34,12 @@ Document.tagged('(+foo +bar) baz')
 
 # Documents tagged foo and bar, or foo and baz
 Document.tagged('(+foo +bar)(+foo +baz)')
+
+# Chaining calls
+Document.where(published: true).tagged('foo').desc(:created_at)
 ```
 
-Be sure to checkout test/integration_test.rb for more examples. By the way, `tagged` returns a `Mongoid::Criteria` object so you can chain it to your existing criteria, e.g: `Document.where(published: true).tagged('foo').desc(:created_at)`
+Be sure to checkout test/integration_test.rb for more examples.
 
 ## Contributing
 
@@ -50,6 +53,6 @@ Be sure to checkout test/integration_test.rb for more examples. By the way, `tag
 
 (The MIT license)
 
-Copyright (c) 2012-2014 Mario Uher
+Copyright (c) 2012-2015 Mario Uher
 
 See LICENSE.md.
