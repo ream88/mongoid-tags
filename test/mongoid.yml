@@ -1,4 +1,10 @@
 test:
+  clients:
+    default:
+      database: mongoid_tags_test
+      hosts:
+        - localhost:27017
+  # TODO Remove Mongoid 4.0 support
   sessions:
     default:
       database: mongoid_tags_test

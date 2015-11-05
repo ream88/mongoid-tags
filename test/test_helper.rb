@@ -6,6 +6,10 @@ require 'minitest/spec'
 
 require 'mongoid/tags'
 
+if defined?(Mongo)
+  Mongo::Logger.logger.level = Logger::INFO
+end
+
 class Document
   include Mongoid::Document
   include Mongoid::Tags
