@@ -12,6 +12,7 @@ In your Gemfile:
 gem 'mongoid-tags'
 ```
 
+
 ## Usage
 
 ```ruby
@@ -39,7 +40,8 @@ Document.tagged('(+foo +bar)(+foo +baz)')
 Document.where(published: true).tagged('foo').desc(:created_at)
 ```
 
-Be sure to checkout test/integration_test.rb for more examples.
+Be sure to checkout [test/integration_test.rb](test/integration_test.rb) for more examples.
+
 
 ## Contributing
 
@@ -48,6 +50,7 @@ Be sure to checkout test/integration_test.rb for more examples.
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
 
 ## Copyright
 
