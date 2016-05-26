@@ -1,4 +1,4 @@
-# mongoid-tags [![Build Status](https://travis-ci.org/haihappen/mongoid-tags.svg?branch=master)](https://travis-ci.org/haihappen/mongoid-tags)
+# mongoid-tags [![Build Status](https://travis-ci.org/ream88/mongoid-tags.svg?branch=master)](https://travis-ci.org/ream88/mongoid-tags)
 
 Mongoid::Tags adds a simple tagging system to your Mongoid documents,
 and allows you to query them using a boolean search syntax.
