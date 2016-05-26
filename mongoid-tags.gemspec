@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Mongoid::Tags::VERSION
   spec.authors       = "Mario Uher"
   spec.email         = "uher.mario@gmail.com"
-  spec.homepage      = "https://github.com/haihappen/mongoid-tags"
+  spec.homepage      = "https://github.com/ream88/mongoid-tags"
   spec.summary       = "Simple tagging system with boolean search."
   spec.description   = "Mongoid::Tags adds a simple tagging system to your Mongoid documents, and allows you to query them using a boolean search syntax."
   spec.license       = "MIT"
