@@ -21,3 +21,6 @@ matrix:
       gemfile: gemfiles/mongoid_6.Gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/mongoid_6.Gemfile
+
+before_install:
+  - gem update bundler
