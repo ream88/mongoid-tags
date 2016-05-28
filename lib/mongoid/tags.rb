@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'active_support'
 require 'mongoid'
 require 'treetop'
@@ -8,7 +9,7 @@ module Mongoid
 
     # @!attribute tags
     #   @return [Array] all tags of the current document
-    included do |base|
+    included do
       field :tags, type: Array, default: []
       index tags: 1
     end
@@ -48,6 +49,7 @@ module Mongoid
       end
 
     private
+
       def parser
         @parser ||= Treetop.load(File.expand_path('../tags.tt', __FILE__)).new
       end

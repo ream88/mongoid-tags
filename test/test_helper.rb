@@ -1,4 +1,5 @@
-$: << File.expand_path('../../lib', __FILE__)
+# frozen_string_literal: true
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -6,9 +7,7 @@ require 'minitest/spec'
 
 require 'mongoid/tags'
 
-if defined?(Mongo)
-  Mongo::Logger.logger.level = Logger::INFO
-end
+Mongo::Logger.logger.level = Logger::INFO if defined?(Mongo)
 
 class Document
   include Mongoid::Document
