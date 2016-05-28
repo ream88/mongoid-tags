@@ -56,6 +56,6 @@ Be sure to checkout [test/integration_test.rb](test/integration_test.rb) for mor
 
 (The MIT license)
 
-Copyright (c) 2012-2015 Mario Uher
+Copyright (c) 2012-2016 Mario Uher
 
 See LICENSE.md.
