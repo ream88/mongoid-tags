@@ -2,4 +2,4 @@
 source 'https://rubygems.org'
 gemspec path: '../'
 
-gem 'mongoid', '~> 6.0'
+gem 'mongoid', '~> 7.0'

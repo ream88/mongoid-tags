@@ -6,21 +6,29 @@ rvm:
   - 2.0.0
   - 2.1.0
   - 2.2.2
+  - 2.6.5
 
 gemfile:
   - Gemfile
   - gemfiles/mongoid_4.Gemfile
   - gemfiles/mongoid_5.Gemfile
   - gemfiles/mongoid_6.Gemfile
+  - gemfiles/mongoid_7.Gemfile
 
 matrix:
   exclude:
     - rvm: 1.9.3
       gemfile: gemfiles/mongoid_6.Gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/mongoid_7.Gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/mongoid_6.Gemfile
+    - rvm: 2.0.0
+      gemfile: gemfiles/mongoid_7.Gemfile
     - rvm: 2.1.0
       gemfile: gemfiles/mongoid_6.Gemfile
+    - rvm: 2.1.0
+      gemfile: gemfiles/mongoid_7.Gemfile
 
 before_install:
   - gem update bundler
